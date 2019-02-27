@@ -1,6 +1,7 @@
 package com.zhuishushenqi;
 
-import com.demo.Book;
+import com.base.Book;
+import com.base.Platform;
 import com.utils.OkHttp;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,15 +14,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 搜书平台
+ * 追书神器
  */
-public class Platform {
+public class PlatformImpl implements Platform {
     private static final String QUERY_BOOK = "http://api.zhuishushenqi.com/book/fuzzy-search?query=%s";
+
+    /**
+     * 构造函数
+     */
+    public PlatformImpl() {
+        /**
+         * nothing
+         */
+    }
 
     /**
      * 根据关键字找书
      */
-    public static List<Book> query(String keyWords) {
+    public List<Book> query(String keyWords) {
         List<Book> bookList = new ArrayList<Book>();
 
         InputStream input = OkHttp.get(String.format(QUERY_BOOK, keyWords), null);
@@ -56,14 +66,5 @@ public class Platform {
         }
 
         return bookList;
-    }
-
-    /**
-     * 构造函数（私有属性，不允许创建实例）
-     */
-    private Platform() {
-        /**
-         * nothing
-         */
     }
 }

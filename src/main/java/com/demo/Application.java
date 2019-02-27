@@ -1,6 +1,9 @@
 package com.demo;
 
-import com.zhuishushenqi.Platform;
+import com.base.Book;
+import com.base.Chapter;
+import com.base.Platform;
+import com.fpzw.PlatformImpl;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -32,7 +35,7 @@ public final class Application {
 				throw new Exception("无效的输入");
 			}
 
-			List<Book> bookList = Platform.query(keyWords);
+			List<Book> bookList = getDefaultPlatform().query(keyWords);
 			if (bookList.isEmpty()) {
 				throw new Exception("没有找到相关的书");
 			}
@@ -90,6 +93,13 @@ public final class Application {
 
 		scanner.close();
 	}
+
+    /**
+     * 使用默认的平台
+     */
+	private Platform getDefaultPlatform() {
+	    return new PlatformImpl();
+    }
 
 	/**
 	 * 主程序入口

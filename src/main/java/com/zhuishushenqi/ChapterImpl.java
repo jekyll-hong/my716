@@ -1,6 +1,6 @@
 package com.zhuishushenqi;
 
-import com.demo.Chapter;
+import com.base.Chapter;
 import com.utils.OkHttp;
 import org.json.JSONException;
 import org.json.JSONObject;

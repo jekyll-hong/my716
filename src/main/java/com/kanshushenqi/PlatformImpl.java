@@ -1,6 +1,7 @@
 package com.kanshushenqi;
 
-import com.demo.Book;
+import com.base.Book;
+import com.base.Platform;
 import com.utils.OkHttp;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -13,17 +14,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 搜书平台
+ * 看书神器
  */
-public class Platform {
+public class PlatformImpl implements Platform {
     private static final String QUERY_BOOK = Domain.URL + "/Search.aspx?isSearchPage=1&key=%s&page=%d";
 
     private static final int BOOK_PER_PAGE = 10;
 
     /**
+     * 构造函数
+     */
+    public PlatformImpl() {
+        /**
+         * nothing
+         */
+    }
+
+    /**
      * 根据关键字找书
      */
-    public static List<Book> query(String keyWords) {
+    public List<Book> query(String keyWords) {
         List<Book> bookList = new ArrayList<Book>();
 
         int pageNumber = 1;
@@ -71,14 +81,5 @@ public class Platform {
         }
 
         return nextPage;
-    }
-
-    /**
-     * 构造函数（私有属性，不允许创建实例）
-     */
-    private Platform() {
-        /**
-         * nothing
-         */
     }
 }
